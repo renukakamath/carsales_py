@@ -1,0 +1,53 @@
+{% include 'userheader.html'%}
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+<center>
+	<h1 style="color: white">View Parts Bookings</h1>
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Slno</th>
+			<th>parts</th>
+		
+		<th>User Name</th>
+		<th>Amount </th>
+		<th>Quantity</th>
+		<th>date</th>
+		<th>Status</th>
+			
+
+		</tr>
+		{% for row in data['partbook']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['parts']}}</td>
+			<td>{{row['fname']}}</td>
+				
+			<td>{{row['amount']}}</td>
+			<td>{{row['quantity']}}</td>
+			<td>{{row['date']}}</td>
+			<td>{{row['status']}}</td>
+			{% if row ['status']=="pending"%}
+			<td><a  class="btn btn-success" href="user_makepartpayment?bid={{row['partbook_id']}}&amt={{row['amount']}}">Make Payment</a></td>
+			{% endif %}
+
+			{% if row ['status']=="halfPaid"%}
+			<td><a  class="btn btn-success" href="payment?bid={{row['partbook_id']}}&amt={{row['amount']}}">Make Payment</a></td>
+			{% endif %}
+			
+
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+{% include 'footer.html'%}

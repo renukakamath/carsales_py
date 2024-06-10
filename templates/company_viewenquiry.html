@@ -1,0 +1,44 @@
+{% include 'companyheader.html'%}
+   <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+	<h1 style="color: white">View Enquiry</h1>
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Slno</th>
+			<th>Enquiry</th>
+		<th>Reply</th>
+		<th>Date</th>
+	
+			
+
+		</tr>
+		{% for row in data['enqu']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['enquiry']}}</td>
+			<td>{{row['reply']}}</td>
+			<td>{{row['date']}}</td>
+			{% if row ['reply']=="pending"%}
+			<td><a  class="btn btn-success"  href="company_sendreply?eid={{row['enquiry_id']}}">Send Reply</a></td>
+			{% endif %}
+
+				
+			
+			
+
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+
+ </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+{% include 'footer.html'%}

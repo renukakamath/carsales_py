@@ -1,0 +1,43 @@
+{% include 'userheader.html'%}
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+<center>
+	<h1 style="color: white">View parts</h1>
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Slno</th>
+			<th>parts</th>
+			
+			<th>Details</th>
+			<th>Amount</th>
+         	
+
+
+		</tr>
+		{% for row in data['parts']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['parts']}}</td>
+
+			<td>{{row['details']}}</td>
+			<td>{{row['amount']}}</td>
+			
+
+			<td><a class="btn btn-success" href="user_addtocart?pid={{row['parts_id']}}&amt={{row['amount']}}&parts={{row['parts']}}">Add To Cart</a></td>
+			
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+{% include 'footer.html'%}

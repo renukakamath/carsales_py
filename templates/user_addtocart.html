@@ -1,0 +1,64 @@
+{% include 'userheader.html'%}
+
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+
+<script type="text/javascript">
+	function TextOnTextChange()
+	{
+		var x =document.getElementById("p_amount").value;
+		var y =document.getElementById("p_qnty").value;
+		document.getElementById("t_amount").value = x * y;
+	}
+
+</script> 
+
+<center>
+	<h2 style="color: white">Add To Cart</h2>
+	<form method="post">
+		<table  class="table" style="width: 500px;color: white">
+		
+			<tr>
+				<th>Parts</th>
+				<td><input type="text" class="form-control" required="" readonly=""  value="{{data['parts']}}" name="parts"></td>
+			</tr>
+			<tr>
+				<th>Vehicle</th>
+				<td><select name="vehicle">
+
+					<option>--Select--</option>
+
+					{% for row in data['vehicle']%}
+					<option value="{{row['vehicle_id']}}">{{row['vehicle']}}</option>
+					{% endfor %}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Quantity</th>
+				<td><input type="text" class="form-control" required=""  id="p_qnty" onchange="TextOnTextChange()"  name="qua"></td>
+			</tr>
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" class="form-control" required="" readonly="" value="{{data['amt']}}" id="p_amount" name="amo"></td>
+			</tr>
+			<tr>
+				<th>total</th>
+				<td><input type="text" class="form-control" required=""  id="t_amount" name="total"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><input type="submit"  class="btn btn-success"name="add"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner-->   
+{% include 'footer.html'%}

@@ -1,0 +1,46 @@
+
+{% include 'companyheader.html'%}
+
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+	<h1 style="color: white">View Enquiry</h1>
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Slno</th>
+			<th>Amount</th>
+		<th>Details</th>
+	
+		
+			
+
+		</tr>
+		{% for row in data['loan']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['amount']}}</td>
+			<td>{{row['details']}}</td>
+		
+			{% if row ['status']=="pending"%}
+			<td><a class="btn btn-success" href="?action=accept&lid={{row['loan_id']}}">Accept</a></td>
+			<td><a class="btn btn-success" href="?action=reject&lid={{row['loan_id']}}">Reject</a></td>
+
+			{% endif %}
+		
+			
+			
+
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+ </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+{% include 'footer.html'%}

@@ -1,0 +1,65 @@
+{% include 'userheader.html'%}
+
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+
+	<h2 style="color: white">Send enquiry</h2>
+	<form method="post">
+	<table  class="table" style="width: 500px;color: white">
+		<tr>
+			<th>Company</th>
+			<td><select name="comp">
+				<option>---Select---</option>
+				{% for row in data['compdrop']%}
+				<option value="{{row['company_id']}}">{{row['company']}}</option>
+				{% endfor %}
+			</select></td>
+		</tr>
+		<tr>
+			<th>enquiry</th>
+			<td><input type="text" class="form-control" required=""  name="emq"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="enquiry"></td>
+		</tr>
+	</table>
+	</form>
+</center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+<center>
+	<h1>View Enquiry</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>Enquiry</th>
+		<th>Reply</th>
+		<th>Date</th>
+	
+			
+
+		</tr>
+		{% for row in data['comp']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['enquiry']}}</td>
+			<td>{{row['reply']}}</td>
+			<td>{{row['date']}}</td>
+				
+			
+			
+
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}

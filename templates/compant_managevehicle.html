@@ -1,0 +1,121 @@
+{%include 'companyheader.html'%}
+ <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+	<h1 style="color: white">Manage vehicle</h1>
+	<form method="post" enctype="multipart/form-data">
+		{% if data['vehicleup']%}
+		<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>vehicle</th>
+			<td><input type="text" required="" class="form-control" value="{{data['vehicleup'][0]['vehicle']}}" name="vehicle"></td>
+		</tr>
+		<tr>
+			<th>amount</th>
+			<td><input type="text" required="" class="form-control"  value="{{data['vehicleup'][0]['amount']}}" name="amount"></td>
+		</tr>
+		<tr>
+			<th>type</th>
+			<td><select name="type">
+				<option value="{{data['vehicleup'][0]['type_id']}}">{{data['vehicleup'][0]['type']}}</option>
+				<option>---Select---</option>
+				{% for row in data['droptype']%}
+				<option value="{{row['type_id']}}">{{row['type']}}</option>
+				{% endfor %}
+			</select></td>
+
+		</tr>
+		<tr>
+			<th>Variant</th>
+			<td><select name="variant">
+				<option value="{{data['vehicleup'][0]['variant_id']}}">{{data['vehicleup'][0]['variant']}}</option>
+				<option>---Select---</option>
+				{% for row in data['dropvariant']%}
+				<option value="{{row['variant_id']}}">{{row['variant']}}</option>
+				{% endfor %}
+			</select></td>
+
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="update"></td>
+		</tr>
+	</table>
+	{% else %}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>vehicle</th>
+			<td><input type="text" required="" class="form-control" name="vehicle"></td>
+		</tr>
+		<tr>
+			<th>amount</th>
+			<td><input type="text" required="" class="form-control"  name="amount"></td>
+		</tr>
+		<tr>
+			<th>type</th>
+			<td><select name="type">
+				<option>---Select---</option>
+				{% for row in data['droptype']%}
+				<option value="{{row['type_id']}}">{{row['type']}}</option>
+				{% endfor %}
+			</select></td>
+
+		</tr>
+		<tr>
+			<th>Variant</th>
+			<td><select name="variant">
+				
+				<option>---Select---</option>
+				{% for row in data['dropvariant']%}
+				<option value="{{row['variant_id']}}">{{row['variant']}}</option>
+				{% endfor %}
+			</select></td>
+
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="add"></td>
+		</tr>
+	</table>
+	{% endif %}
+	</form>
+</center>
+        </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner-->    
+<center>
+	<h1>View vehicle</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>vehicle</th>
+
+			<th>amount</th>
+         	<th>type</th>
+         	<th>variant</th>
+
+
+		</tr>
+		{% for row in data['vehicleview']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['vehicle']}}</td>
+			<td>{{row['amount']}}</td>
+
+
+			<td>{{row['type']}}</td>
+			<td>{{row['variant']}}</td>
+
+			<td><a class="btn btn-success" href="?action=delete&vid={{row['vehicle_id']}}">delete</a></td>
+			<td><a class="btn btn-success" href="?action=update&vid={{row['vehicle_id']}}">Update</a></td>
+			<td><a class="btn btn-success" href="company_managefeatures?vid={{row['vehicle_id']}}">Manage features</a></td>
+			<td><a class="btn btn-success" href="company_managespecification?vid={{row['vehicle_id']}}">Manage specification</a></td>
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}

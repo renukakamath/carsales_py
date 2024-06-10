@@ -1,0 +1,59 @@
+{%include 'companyheader.html'%}
+
+      <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+<center>
+	<h1 style="color: white">Manage type</h1>
+	<form method="post">
+		{% if data['typeup']%}
+		<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>type</th>
+			<td><input type="text" required="" class="form-control" value="{{data['typeup'][0]['type']}}" name="type"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="update"></td>
+		</tr>
+	</table>
+	{% else %}
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<th>type</th>
+			<td><input type="text" required="" class="form-control" name="type"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="addtype"></td>
+		</tr>
+	</table>
+	{% endif %}
+	</form>
+</center>
+
+          </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner-->       
+<center>
+	<h1>View type</h1>
+	<table class="table" style="width: 500px">
+		<tr>
+			<th>Slno</th>
+			<th>type</th>
+
+		</tr>
+		{% for row in data['typeview']%}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{row['type']}}</td>
+			<td><a class="btn btn-success" href="?action=delete&tid={{row['type_id']}}">delete</a></td>
+			<td><a class="btn btn-success" href="?action=update&tid={{row['type_id']}}">Update</a></td>
+		</tr>
+
+		{%endfor %}
+	</table>
+</center>
+{% include 'footer.html'%}

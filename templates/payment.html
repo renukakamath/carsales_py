@@ -1,0 +1,67 @@
+{% include 'userheader.html'%}
+    <!--/main-banner-->
+    <div class="w3l-main-slider position-relative" id="home">
+        <div class="w3l-bannerhny-content">
+            <div class="container">
+                <div class="w3l-bannerhny-info">
+
+
+
+                	<script type="text/javascript">
+	function TextOnTextChange()
+	{
+		var x =document.getElementById("p_amount").value;
+		var y =document.getElementById("p_qnty").value;
+
+			var z =document.getElementById("p_tax").value;
+		document.getElementById("t_amount").value = parseInt(x) + parseInt(y) + parseInt(z) ;
+	}
+
+</script> 
+<center>
+	<body onload="TextOnTextChange()"></body>
+	<h1 style="color: white">Make Payment</h1>
+	<form method="post" >
+		<table  class="table" style="width: 500px;color: white">
+			<tr>
+				
+				<th>Card Number</th>
+				<td><input type="text" class="form-control" required=""  name="vard"></td>
+			</tr>
+			<tr>
+				<th>C V V</th>
+				<td><input type="text" class="form-control" required=""  name="cvv"></td>
+			</tr>
+
+			<tr>
+				<th>Insurence Amount</th>
+				<td><input type="text" class="form-control" id="p_amount" value="1000" required=""  name=""></td>
+			</tr>
+			<tr>
+				<th>Tax</th>
+				<td><input type="text" class="form-control" id="p_qnty" value="1000" required=""  name="cvv"></td>
+			</tr>
+
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" class="form-control" required="" id="p_tax"     value="{{data['amt']}}" name="ant"></td>
+			</tr>
+
+			<tr>
+				<th>Amount</th>
+				<td><input type="text" class="form-control" required=""  id="t_amount"   name="amo"></td>
+			</tr>
+			
+			<tr>
+				<td align="center" colspan="2"><input type="submit" class="btn btn-success" name="payment"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//main-banner--> 
+{% include 'footer.html'%}
